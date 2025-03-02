@@ -4,4 +4,3 @@ ansible_connection: "ansible.netcommon.network_cli"
 ansible_user: "admin"
 ansible_password: "admin"
 ansible_become: yes
-ansible_enable_password: "admin"
