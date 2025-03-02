@@ -5,13 +5,9 @@
     - name: "Collect Arista Device Facts"
       arista.eos.eos_facts:
         gather_subset: all
-    - name: "Print Config"
-      ansible.builtin.debug:
-        var: ansible_net_config
     - name: "Extract configured DNS servers"
       ansible.builtin.set_fact:
-        configured_dns: "{{ ansible_net_config | regex_findall('ip name-server (.+)') }}"
-
+        configured_dns: "{{ ansible_net_config | regex_findall('ip name-server vrf default (.+)') }}"
     - name: "Validate DNS Configuration"
       ansible.builtin.fail:
         msg: "Configured DNS servers {{ configured_dns }} do not match expected {{ global['dns'] }}"
