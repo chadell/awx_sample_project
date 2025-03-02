@@ -4,7 +4,6 @@
   tasks:
     - name: "Configure Basic Configuration on Arista Fabric"
       arista.eos.eos_config:
-        authorize: yes
         lines:
           - "ip name-server {{ item }}"    
       loop: "{{ global['dns'] }}"
