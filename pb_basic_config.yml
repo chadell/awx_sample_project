@@ -3,7 +3,7 @@
   hosts: arista_ceos
   tasks:
     - name: "Configure Basic Configuration on Arista Fabric"
-      arista.eos.eos_system:
-        hostname: "{{ inventory_hostname }}"
-        name_servers: "{{ global['dns'] }}"
-        state: present
+      arista.eos.eos_config:
+        lines:
+          - "ip name-server {{ item }}"    
+        loop: "{{ global['dns'] }}"
