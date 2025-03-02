@@ -2,6 +2,9 @@
 - name: "Configure Hostname and DNS"
   hosts: arista_ceos
   tasks:
+    - name: "Debug DNS variable"
+      ansible.builtin.debug:
+        msg: "{{ global['dns'] }}"
     - name: "Configure Basic Configuration on Arista Fabric"
       arista.eos.eos_config:
         lines:
