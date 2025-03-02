@@ -9,4 +9,4 @@
       arista.eos.eos_config:
         lines:
           - "ip name-server {{ item }}"    
-        loop: "{{ global['dns'] }}"
+      loop: "{{ global['dns'] }}"
